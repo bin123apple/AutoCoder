@@ -45,7 +45,7 @@ You will receive a file named AutoCoder_HumanEval+.jsonl, which follows the Eval
 
 Then follow the testing framework of the [EvalPlus GitHub](https://github.com/evalplus/evalplus). You will see the results. 
 
-NOTE: 
+**NOTE**: 
 * Don't forget to use evalplus's `evalplus.sanitize` to post-process the code. 
 * If you don't use the greedy method (for example set the `do_sample=True`) for the code generation. You will probably see the different results.
 
@@ -75,7 +75,7 @@ Run it:
 python chatbot.py
 ```
 
-NOTE:
+**NOTE**:
 * This demo is NOT totally finished yet, there are still some bugs. One know bug is that the docker container will not be removed if use `ctrl + c` to kill the process. I will fix it soon. For now, you can 
 click `Clear` bottom to remove the docker container for now. 
 
