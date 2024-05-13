@@ -11,7 +11,7 @@ Here are the video demos for the code interpreter comparision between GPT-4 Turb
 
 [AutoCoder](https://github.com/bin123apple/AutoCoder/blob/main/video_demos/AutoCoder_demo.mp4)
 
-<video src="[video_link_here](https://github.com/bin123apple/AutoCoder/blob/main/video_demos/AutoCoder_demo.mp4)" controls="controls" width="500px"></video>
+<video src="[https://github.com/bin123apple/AutoCoder/blob/main/video_demos/AutoCoder_demo.mp4]" controls="controls" width="500px"></video>
 
 
 ## Model
