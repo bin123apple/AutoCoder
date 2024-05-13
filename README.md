@@ -35,7 +35,7 @@ conda activate AutoCoder
 pip install -r requirements.txt
 ```
 
-2. Test on HumanEval (90.9% on base, 78.0% on base + extra). 
+2. Test on HumanEval **90.9% on base, 78.0% on base + extra**. 
 
 ```
 cd Evaluation
@@ -49,7 +49,7 @@ NOTE:
 * Don't forget to use evalplus's `evalplus.sanitize` to post-process the code. 
 * If you don't use the greedy method (for example set the `do_sample=True`) for the code generation. You will probably see the different results.
 
-3. Test on MBPP (82.5% on base, 70.6% on base + extra). 
+3. Test on MBPP **82.5% on base, 70.6% on base + extra**. 
 
 ```
 python test_humaneval.py
