@@ -5,7 +5,7 @@ We introduced a new model designed for the Code generation task. Its test accura
 
 Additionally, compared to previous open-source models, AutoCoder offers a new feature: it can **automatically install the required packages** and attempt to run the code until it deems there are no issues, **whenever the user wishes to execute the code**.
 
-Here are the video demos:
+Here are the video demos for the code interpreter comparision between GPT-4 Turbo and AutoCoder: 
 
 [GPT-4 Turbo](https://github.com/bin123apple/AutoCoder/assets/99925255/b4079c2c-504d-4e56-ad94-c3a18f4360ec)
 
