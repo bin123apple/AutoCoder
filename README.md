@@ -12,60 +12,41 @@ Here are the video demos:
 ## Model
 The Model is avaliable on Huggingface: [Fortran2Cpp](https://huggingface.co/Bin12345/F2C-Translator)
 
+### Quick Start
+1. Create the conda env
 
-## Evaluation
+```
+conda create -n AutoCoder python=3.11
+conda activate AutoCoder
+pip install -r requirements.txt
+```
 
- 
+2. Test on HumanEval 
 
-### Reproduce Steps
-1. Enter into Evaluation folder
+```
+cd Evaluation
+python test_humaneval.py
+```
+You will receive a file named AutoCoder_HumanEval+.jsonl, which follows the EvalPlus format, after this step.
+
+Then follow the testing framework of the [EvalPlus GitHub](https://github.com/evalplus/evalplus). You will see the results (90.9% on base, 78.0% on base + extra). 
+
+NOTE: 
+* Don't forget to use evalplus's `evalplus.sanitize` to post-process the code. 
+* If you don't use the greedy method (for example set the `do_sample=True`) for the code generation. You will probably see the different results.
+
+3. Enter into Evaluation folder
 
 ```
 cd Evaluation
 ```
 
-2. Generate the results. Go the script `text_generation_pipline.py`. Add your own huggingface token to line 16. Modify the path where you want to store your results in line 55. Then select the model that you want to test between line 8 and line 13.
-
-Run:
-```
-python text_generation_pipline.py
-```
-
-This will generate the results and compress each result to one line for the further CodeBLEU Score test.
-
-3. Test CodeBLEU Score by using the following command
-
-```
-cd CodeBLEU
-python calc_code_bleu.py --refs Fortran2Cpp/Evaluation/Groundtruth_C++.txt --hyp <path/to/your/results/txt/file> --lang cpp --params 0.25,0.25,0.25,0.25
-```
-
-## Inference and Demo
-The demo code is modified from [OpenCodeInterpreter](https://github.com/OpenCodeInterpreter/OpenCodeInterpreter/tree/main/demo). Appreciate for their great project!
-
-1. Create conda and install packages
-```
-cd Web_demo
-conda create -n demo python=3.10
-conda activate demo
-pip install -r requirements.txt
-```
-
-2.  Start the demo
-```
-python chatbot.py
-```
-
-**NOTE:** This demo will not use the interpreter function. This feature is a potential extension for this work.
-
-## Hardware requirements
-
-We used 6 A100 GPUs with 80GB memory for the training.  (Use Lora)
-
-We used 2 A100 GPUs with 80GB memory for the inference. 
-
 ## Contact 
 If you have any inquiries, please feel free to raise an issue or reach out to leib2765@gmail.com.
 
 ## Citation
-We will complete the technical introduction paper before mid-May.
+We will complete the technical introduction paper soon.
+
+## Acknowledgments
+Thanks to Tianyu Zheng, the first author of the [OpenCodeInterpreter](https://opencodeinterpreter.github.io/), for guidance on some technical details.
+
