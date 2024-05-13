@@ -20,7 +20,9 @@ AutoCoder can automatically install the required packages. This feature expands 
 The code interpreter of AutoCoder, like GPT-4 Turbo, is only called when the user has a need to verify the code, while OpenCodeInterpreter runs all generated python code.
 
 ## Model
-The Model is avaliable on Huggingface: [Fortran2Cpp](https://huggingface.co/Bin12345/F2C-Translator)
+The Model is avaliable on Huggingface: [AutoCoder](Bin12345/AutoCoder)
+
+The base model is deepseeker 33B.
 
 ### Quick Start
 1. Create the conda env
