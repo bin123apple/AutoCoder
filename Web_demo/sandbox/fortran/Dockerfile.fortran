@@ -1,0 +1,9 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y gfortran libgomp1
+
+WORKDIR /app
+
+COPY . /app
+
+CMD ["/app/compile_run.sh"]

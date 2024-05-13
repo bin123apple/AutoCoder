@@ -2,7 +2,7 @@ import json
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-model_path = ""
+model_path = "Bin12345/AutoCoder"
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 model = AutoModelForCausalLM.from_pretrained(model_path, 
                                              device_map="auto")

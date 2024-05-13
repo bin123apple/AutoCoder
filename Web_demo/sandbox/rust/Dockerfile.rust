@@ -1,0 +1,26 @@
+# 使用最新的Ubuntu镜像作为基础镜像
+FROM ubuntu:latest
+
+# 设置非交互模式，防止apt-get等命令在安装过程中等待用户输入
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 更新软件包列表
+RUN apt-get update
+
+# 安装curl工具，用于下载Rust安装脚本，以及安装 build-essential 包
+RUN apt-get install -y curl build-essential
+
+# 使用Rust官方安装脚本安装Rust，安装后清理不必要的文件
+RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# 将Rust的cargo工具的二进制目录添加到PATH环境变量中，以便可以直接使用cargo命令
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# 设置工作目录为/app
+WORKDIR /app
+
+# 复制当前目录下的所有文件到容器的/app目录中
+COPY . /app/
+
+CMD ["/app/compile_run.sh"]
