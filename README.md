@@ -7,10 +7,7 @@ Additionally, compared to previous open-source models, AutoCoder offers a new fe
 
 Here are the video demos for the code interpreter comparision between GPT-4 Turbo and AutoCoder: 
 
-GPT-4 Turbo | caption2
-:-: | :-:
-<video src='https://github.com/bin123apple/AutoCoder/assets/99925255/b4079c2c-504d-4e56-ad94-c3a18f4360ec' width=180/> | <video src='https://vimeo.com/945919144?share=copy' width=180/>
-
+[GPT-4 Turbo](https://github.com/bin123apple/AutoCoder/assets/99925255/b4079c2c-504d-4e56-ad94-c3a18f4360ec)
 
 ## Model
 The Model is avaliable on Huggingface: [Fortran2Cpp](https://huggingface.co/Bin12345/F2C-Translator)
