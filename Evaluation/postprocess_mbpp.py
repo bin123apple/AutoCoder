@@ -33,7 +33,7 @@ def process_files(file_path1, output_file):
             updated_data.append(new_entry)
     write_jsonl(updated_data, output_file)
 
-file_path1 = 'AutoCoder_Mbpp+_new.jsonl'
-output_file = 'AutoCoder_Mbpp+_new_wo_test-sanitized.jsonl'
+file_path1 = '/data2/bil22003/AutoCoder_git/AutoCoder_6.7B_Mbpp+.jsonl'
+output_file = '/data2/bil22003/AutoCoder_git/AutoCoder_6.7B_Mbpp+-sanitized.jsonl'
 
 process_files(file_path1, output_file)
