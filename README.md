@@ -22,9 +22,11 @@ AutoCoder can automatically install the required packages. This feature expands 
 The code interpreter of AutoCoder, like GPT-4 Turbo, is only called when the user has a need to verify the code, while OpenCodeInterpreter runs all generated python code.
 
 ## Model
-The Model is avaliable on Huggingface: [AutoCoder](https://huggingface.co/Bin12345/AutoCoder)
+The Model is avaliable on Huggingface: 
+[AutoCoder-33B](https://huggingface.co/Bin12345/AutoCoder)
+[AutoCoder-6.7B](https://huggingface.co/Bin12345/AutoCoder_S_6.7B)
 
-The base model is deepseeker 33B.
+The base model is deepseeker-coder.
 
 ### Quick Start
 1. Create the conda env
@@ -62,7 +64,16 @@ python postprocess_mbpp.py
 Your will get a AutoCoder_Mbpp+-sanitized.jsonl file after this step, it extracted all the code blocks. 
 Then, directly test it by using [EvalPlus GitHub](https://github.com/evalplus/evalplus) (You don't need to use to use evalplus's `evalplus.sanitize` to post-process the code this time).
 
-4. Web demo (Include code interpreter)
+4. Test on DS-1000. 
+
+```
+python test_ds1000.py
+```
+
+Your will get a jsonl file after this step, it extracted all the code blocks. 
+Then, directly test it by using [DS-1000 GitHub](https://github.com/xlang-ai/DS-1000).
+
+5. Web demo (Include code interpreter)
 
 Install gradio related pakcages
 ```
