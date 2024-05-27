@@ -9,9 +9,9 @@ Additionally, compared to previous open-source models, AutoCoder offers a new fe
 
 Below are the video demos for the code interpreter comparision between GPT-4 Turbo and AutoCoder: 
 
-GPT-4 Turbo can not access the external library.
+GPT-4o can not access the external library.
 
-[GPT-4 Turbo](https://github.com/bin123apple/AutoCoder/assets/99925255/47a79394-818c-44ab-92c8-c0e653bd6fa8)
+[GPT-4o](https://github.com/bin123apple/AutoCoder/assets/99925255/c8b25516-3359-4a70-ad2d-f16e30e33719)
 
 AutoCoder can automatically install the required packages. This feature expands the scope of code interpreter's application.
 
