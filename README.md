@@ -11,7 +11,7 @@ Below are the video demos for the code interpreter comparision between GPT-4 Tur
 
 GPT-4o can not access the external library.
 
-[GPT-4o](https://github.com/bin123apple/AutoCoder/assets/99925255/c8b25516-3359-4a70-ad2d-f16e30e33719)
+[GPT-4o](https://github.com/bin123apple/AutoCoder/assets/99925255/be47b449-4e8a-4b77-981b-ec79b15970cc)
 
 AutoCoder can automatically install the required packages. This feature expands the scope of code interpreter's application.
 
