@@ -99,7 +99,16 @@ click `Clear` bottom to remove the docker container for now.
 If you have any inquiries, please feel free to raise an issue or reach out to leib2765@gmail.com.
 
 ## Citation
-We will complete the technical introduction paper soon.
+```
+@misc{lei2024autocoder,
+      title={AutoCoder: Enhancing Code Large Language Model with \textsc{AIEV-Instruct}}, 
+      author={Bin Lei and Yuchen Li and Qiuwu Chen},
+      year={2024},
+      eprint={2405.14906},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE}
+}
+```
 
 ## Acknowledgments
 Thanks to Tianyu Zheng, the first author of the [OpenCodeInterpreter](https://opencodeinterpreter.github.io/), for guidance on some technical details.
