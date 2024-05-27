@@ -7,6 +7,7 @@ import logging
 import subprocess
 
 import torch
+import atexit
 from datetime import datetime
 
 from threading import Thread
@@ -343,7 +344,11 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
             interpreter.dialog = []
             clean_docker_container(container_name)
             return [], [], update_uuid(dialog_info)
+        
+        def on_exit():
+            clean_docker_container(container_name)
 
+        atexit.register(on_exit)
         interpreter = StreamingAutoCodeInterpreter(model_path=model_path)
         
         index = 0

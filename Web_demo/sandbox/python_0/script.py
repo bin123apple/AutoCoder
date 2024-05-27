@@ -1,20 +1,13 @@
-# To install the Hugging Face library, run:
-# !pip install datasets
+def calculate_sum(n):
+    """
+    Function to calculate the sum of numbers from 1 to n using arithmetic progression formula.
+    """
+    return n * (n + 1) // 2
 
-from datasets import load_dataset
-
-def get_first_test_data_entry():
-    # Load the dataset from Hugging Face
-    dataset = load_dataset('nathanlauga/evalplus')
-
-    # Get the test dataset
-    test_dataset = dataset['test']
-
-    # Get the first entry in the test dataset
-    first_entry = test_dataset[0]
-
-    return first_entry
-
-# Call the function and print the first entry
-first_entry = get_first_test_data_entry()
-print("First entry:", first_entry)
+# Test the function with some examples
+if __name__ == "__main__":
+    test_values = [1, 2, 3, 4, 5, 10, 20, 100, 1000]
+    
+    for value in test_values:
+        result = calculate_sum(value)
+        print(f"The sum of numbers from 1 to {value} is: {result}")
