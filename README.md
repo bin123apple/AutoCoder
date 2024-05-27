@@ -87,8 +87,6 @@ python chatbot.py
 ```
 
 **NOTE**:
-* This demo is NOT totally finished yet, there are still some bugs. One know bug is that the docker container will not be removed if use `ctrl + c` to kill the process. I will fix it soon. For now, you can 
-click `Clear` bottom to remove the docker container for now. 
 
 * Currently the model will only start the code interpreter if you ask it to **verify** its code. I am still finetuning it on a instructed dataset, which will give it the ability to enable the code interpreter upon a user request to **run** code. I will update the model when it is finished.
 
