@@ -230,23 +230,23 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
             # Set up docker related path
             attempt = 1
             
-            # Creat docker image 
-            check_command = ["docker", "images", "-q", image_name]
-            image_exists = subprocess.run(check_command, capture_output=True, text=True).stdout.strip()
-            if not image_exists:
-                dockerfile_path = os.path.join(sandbox_path, dockerfile_name)
-                # lang_sandbox_path = f"{sandbox_path}/{lang}/"
-                lang_sandbox_path = f"{sandbox_path}"
-                build_command = ["docker", "build", "-t", image_name, "-f", dockerfile_path, lang_sandbox_path]
-                build_result = subprocess.run(build_command, capture_output=True, text=True)
-                if build_result.returncode != 0:
-                    print(f"Failed to build image {image_name}: {build_result.stderr}")
-                    code_blocks_output[lang] = f"Failed to build image {image_name}: {build_result.stderr}"
+            # # Creat docker image 
+            # check_command = ["docker", "images", "-q", image_name]
+            # image_exists = subprocess.run(check_command, capture_output=True, text=True).stdout.strip()
+            # if not image_exists:
+            #     dockerfile_path = os.path.join(sandbox_path, dockerfile_name)
+            #     # lang_sandbox_path = f"{sandbox_path}/{lang}/"
+            #     lang_sandbox_path = f"{sandbox_path}"
+            #     build_command = ["docker", "build", "-t", image_name, "-f", dockerfile_path, lang_sandbox_path]
+            #     build_result = subprocess.run(build_command, capture_output=True, text=True)
+            #     if build_result.returncode != 0:
+            #         print(f"Failed to build image {image_name}: {build_result.stderr}")
+            #         code_blocks_output[lang] = f"Failed to build image {image_name}: {build_result.stderr}"
             
-            # Keeping the docker backend running
-            subprocess.run(["docker", "run", "-d", "-v", 
-                            volume_mount, "--name", f"{container_name}", 
-                            image_name, "tail", "-f", "/dev/null"], check=True)
+            # # Keeping the docker backend running
+            # subprocess.run(["docker", "run", "-d", "-v", 
+            #                 volume_mount, "--name", f"{container_name}", 
+            #                 image_name, "tail", "-f", "/dev/null"], check=True)
             
             print(f"HAS_Code:{HAS_CODE}")
             # Enter into code interpreter and run the code
@@ -361,6 +361,24 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
         sandbox_path = f"{main_path}/python_{index}"
         volume_mount = f"{sandbox_path}:/app"
 
+        # Creat docker image 
+        check_command = ["docker", "images", "-q", image_name]
+        image_exists = subprocess.run(check_command, capture_output=True, text=True).stdout.strip()
+        if not image_exists:
+            dockerfile_path = os.path.join(sandbox_path, dockerfile_name)
+            # lang_sandbox_path = f"{sandbox_path}/{lang}/"
+            lang_sandbox_path = f"{sandbox_path}"
+            build_command = ["docker", "build", "-t", image_name, "-f", dockerfile_path, lang_sandbox_path]
+            build_result = subprocess.run(build_command, capture_output=True, text=True)
+            if build_result.returncode != 0:
+                print(f"Failed to build image {image_name}: {build_result.stderr}")
+                # code_blocks_output[lang] = f"Failed to build image {image_name}: {build_result.stderr}"
+        
+        # Keeping the docker backend running
+        subprocess.run(["docker", "run", "-d", "-v", 
+                        volume_mount, "--name", f"{container_name}", 
+                        image_name, "tail", "-f", "/dev/null"], check=True)
+        
         sub.click(partial(bot, interpreter=interpreter, image_name = image_name, 
                           container_name = container_name, dockerfile_name = dockerfile_name,
                           sandbox_path = sandbox_path, volume_mount = volume_mount), 

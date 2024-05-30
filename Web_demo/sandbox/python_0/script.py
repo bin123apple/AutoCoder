@@ -1,13 +1,21 @@
-def calculate_sum(n):
-    """
-    Function to calculate the sum of numbers from 1 to n using arithmetic progression formula.
-    """
-    return n * (n + 1) // 2
+# Ensure matplotlib is installed: pip install matplotlib
 
-# Test the function with some examples
-if __name__ == "__main__":
-    test_values = [1, 2, 3, 4, 5, 10, 20, 100, 1000]
-    
-    for value in test_values:
-        result = calculate_sum(value)
-        print(f"The sum of numbers from 1 to {value} is: {result}")
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create a range of values from 0 to 2pi
+t = np.linspace(0, 2 * np.pi, 1000)
+
+# Calculate x and y using heart shape formula
+x = 16 * np.sin(t) ** 3
+y = 13 * np.cos(t) - 5*np.cos(2*t) - 2*np.cos(3*t) - np.cos(4*t)
+
+# Plot the heart shape
+plt.plot(x, y, 'r')
+
+# Optional: Adjust the plot for better visibility
+plt.axis('equal')
+plt.axis('off')
+
+# Show the plot
+plt.show()
