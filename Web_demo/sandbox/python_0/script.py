@@ -1,21 +1,13 @@
-# Ensure matplotlib is installed: pip install matplotlib
+def sum_numbers(n):
+    total = 0
+    for i in range(n + 1):
+        total += i
+    return total
 
-import matplotlib.pyplot as plt
-import numpy as np
+def main():
+    n = 10  # Predefined value for n
+    result = sum_numbers(n)
+    print(f"The sum of numbers from 1 to {n} is: {result}")
 
-# Create a range of values from 0 to 2pi
-t = np.linspace(0, 2 * np.pi, 1000)
-
-# Calculate x and y using heart shape formula
-x = 16 * np.sin(t) ** 3
-y = 13 * np.cos(t) - 5*np.cos(2*t) - 2*np.cos(3*t) - np.cos(4*t)
-
-# Plot the heart shape
-plt.plot(x, y, 'r')
-
-# Optional: Adjust the plot for better visibility
-plt.axis('equal')
-plt.axis('off')
-
-# Show the plot
-plt.show()
+if __name__ == "__main__":
+    main()

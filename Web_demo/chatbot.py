@@ -322,9 +322,15 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
             except subprocess.CalledProcessError as e:
                 print(f"An error occurred while removing the container {container_name}: {e}")
                 
-        def clear_history(history, dialog_info, interpreter, container_name):
+        def clear_history(history, dialog_info, interpreter, container_name, 
+                          image_name, volume_mount):
             interpreter.dialog = []
             clean_docker_container(container_name)
+            
+            # Keeping the docker backend running
+            subprocess.run(["docker", "run", "-d", "-v", 
+                            volume_mount, "--name", f"{container_name}", 
+                            image_name, "tail", "-f", "/dev/null"], check=True)
             return [], [], update_uuid(dialog_info)
         
         def on_exit():
@@ -368,7 +374,10 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
                   [chatbot, session_state, dialog_info])
         sub.click(reset_textbox, [], [msg])
 
-        clear.click(partial(clear_history, interpreter=interpreter, container_name = container_name), [session_state, dialog_info], [chatbot, session_state, dialog_info], queue=False)
+        clear.click(partial(clear_history, interpreter=interpreter, container_name = container_name, 
+                            image_name = image_name, volume_mount = volume_mount), 
+                    [session_state, dialog_info], 
+                    [chatbot, session_state, dialog_info], queue=False)
 
     demo.queue(max_size=20)
     demo.launch(share=True, server_port = 7000)
