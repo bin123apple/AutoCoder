@@ -7,7 +7,7 @@ Additionally, compared to previous open-source models, AutoCoder offers a new fe
 
 * Difference between the code interpreter of AutoCoder and the GPT-4 Turbo:
 
-Below are the video demos for the code interpreter comparision between GPT-4 Turbo and AutoCoder: 
+Below are the video demos for the code interpreter comparison between GPT-4 Turbo and AutoCoder: 
 
 GPT-4o can not access the external library.
 
