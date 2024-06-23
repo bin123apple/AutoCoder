@@ -30,10 +30,13 @@ The code interpreter of AutoCoder, like GPT-4 Turbo, is only called when the use
 ## Model :gift:
 The Model is avaliable on Huggingface: 
 [AutoCoder (33B)](https://huggingface.co/Bin12345/AutoCoder)
-[AutoCoder_QW_7B](https://huggingface.co/Bin12345/AutoCoder_QW_7B)
 [AutoCoder-S (6.7B)](https://huggingface.co/Bin12345/AutoCoder_S_6.7B)
 
-The base model is deepseeker-coder.
+The base models of AutoCoder (33B) and AutoCoder-S (6.7B) are deepseeker-coder.
+
+[AutoCoder_QW_7B](https://huggingface.co/Bin12345/AutoCoder_QW_7B)
+
+The base model of AutoCoder_QW_7B is CodeQwen1.5-7b.
 
 ## Quick Start :rocket:
 1. Create the conda env
