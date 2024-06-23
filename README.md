@@ -1,6 +1,12 @@
 # AutoCoder
 
-## Introduction
+## News :fire: 
+
+A new model [AutoCoder_QW_7B](https://huggingface.co/Bin12345/AutoCoder_QW_7B) is uploaded. In this model, We fixed the previous problem that the model will only start the code interpreter when you ask it to *verify* its code. 
+
+The base model of AutoCode_QW_7B is [CodeQwen1.5-7b](https://huggingface.co/Qwen/CodeQwen1.5-7B-Chat).
+
+## Introduction :mega:
 We introduced a new model designed for the Code generation task. Its test accuracy on the HumanEval base dataset surpasses that of GPT-4 Turbo (April 2024). (**90.9% vs 90.2%**).
 
 Additionally, compared to previous open-source models, AutoCoder offers a new feature: it can **automatically install the required packages** and attempt to run the code until it deems there are no issues, **whenever the user wishes to execute the code**.
@@ -21,14 +27,15 @@ AutoCoder can automatically install the required packages. This feature expands 
 
 The code interpreter of AutoCoder, like GPT-4 Turbo, is only called when the user has a need to verify the code, while OpenCodeInterpreter runs all generated python code.
 
-## Model
+## Model :gift:
 The Model is avaliable on Huggingface: 
 [AutoCoder (33B)](https://huggingface.co/Bin12345/AutoCoder)
+[AutoCoder_QW_7B](https://huggingface.co/Bin12345/AutoCoder_QW_7B)
 [AutoCoder-S (6.7B)](https://huggingface.co/Bin12345/AutoCoder_S_6.7B)
 
 The base model is deepseeker-coder.
 
-### Quick Start
+## Quick Start :rocket:
 1. Create the conda env
 
 ```
@@ -37,7 +44,7 @@ conda activate AutoCoder
 pip install -r requirements.txt
 ```
 
-2. Test on HumanEval **90.9% on base, 78.0% on base + extra**. 
+2. Test on HumanEval **90.9% on base, 78.0% on base + extra**. (Skip to Step 5, if you don't want to test its performance on benchmarks)
 
 ```
 cd Evaluation
@@ -51,7 +58,7 @@ Then follow the testing framework of the [EvalPlus GitHub](https://github.com/ev
 * Don't forget to use evalplus's `evalplus.sanitize` to post-process the code. 
 * If you don't use the greedy method (for example set the `do_sample=True`) for the code generation. You will probably see the different results.
 
-3. Test on MBPP **82.5% on base, 70.6% on base + extra**. 
+3. Test on MBPP **82.5% on base, 70.6% on base + extra**. (Skip to Step 5, if you don't want to test its performance on benchmarks)
 
 ```
 python test_humaneval.py
@@ -64,7 +71,7 @@ python postprocess_mbpp.py
 Your will get a AutoCoder_Mbpp+-sanitized.jsonl file after this step, it extracted all the code blocks. 
 Then, directly test it by using [EvalPlus GitHub](https://github.com/evalplus/evalplus) (You don't need to use to use evalplus's `evalplus.sanitize` to post-process the code this time).
 
-4. Test on DS-1000. 
+4. Test on DS-1000. (Skip to Step 5, if you don't want to test its performance on benchmarks)
 
 ```
 python test_ds1000.py
@@ -86,17 +93,15 @@ Run it:
 python chatbot.py
 ```
 
-**NOTE**:
-
-* Currently the model will only start the code interpreter if you ask it to **verify** its code. I am still finetuning it on a instructed dataset, which will give it the ability to enable the code interpreter upon a user request to **run** code. I will update the model when it is finished.
-
+## **NOTE** :warning:
 * We suggest to set `do_sample = True` (default setting here) while using the code interpreter.
 
+* It would be preferable to use Linux for deploying everything.
 
-## Contact 
+## Contact :email:
 If you have any inquiries, please feel free to raise an issue or reach out to leib2765@gmail.com.
 
-## Citation
+## Citation :book:
 ```
 @misc{lei2024autocoder,
       title={AutoCoder: Enhancing Code Large Language Model with \textsc{AIEV-Instruct}}, 
@@ -108,6 +113,6 @@ If you have any inquiries, please feel free to raise an issue or reach out to le
 }
 ```
 
-## Acknowledgments
+## Acknowledgments :pray:
 Thanks to Tianyu Zheng, the first author of the [OpenCodeInterpreter](https://opencodeinterpreter.github.io/), for guidance on some technical details.
 

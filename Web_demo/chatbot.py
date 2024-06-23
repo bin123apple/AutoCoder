@@ -201,7 +201,7 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
             code_block = ""
             for character in interpreter.streamer:
                 history[-1][1] += character
-                history[-1][1] = history[-1][1].replace("<|EOT|>","").replace("<API_RUN_START>","").replace("<API_RUN_STOP>","")
+                history[-1][1] = history[-1][1].replace("<|EOT|>","").replace("<API_RUN_START>","").replace("<API_RUN_STOP>","").replace("<|im_end|>","")
                 generated_text += character
                 yield history, history, dialog_info
             print("generated_text",generated_text)
@@ -212,7 +212,8 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
                     "role": "assistant",
                     "content": generated_text.replace("<unk>_", "")
                     .replace("<unk>", "")
-                    .replace("<|EOT|>", ""),
+                    .replace("<|EOT|>", "")
+                    .replace("<|im_end|>",""),
                 }
             )
             
@@ -280,7 +281,7 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
                 _ = interpreter.generate(inputs)
                 for character in interpreter.streamer:
                     history[-1][1] += character
-                    history[-1][1] = history[-1][1].replace("<|EOT|>","").replace("<API_RUN_START>","").replace("<API_RUN_STOP>","")
+                    history[-1][1] = history[-1][1].replace("<|EOT|>","").replace("<API_RUN_START>","").replace("<API_RUN_STOP>","").replace("<|im_end|>","")
                     generated_text += character
                     yield history, history, dialog_info
                 logging.info(f"finish generating answer for dialog {dialog_info[0]}")
@@ -290,7 +291,8 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
                         "role": "assistant", 
                         "content": generated_text.replace("<unk>_", "")
                         .replace("<unk>", "")
-                        .replace("<|EOT|>", ""),
+                        .replace("<|EOT|>", "")
+                        .replace("<|im_end|>",""),
                     }
                 )
                 
@@ -306,7 +308,7 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
                 logging.info(f"current dialog: {interpreter.dialog}")
                 save_json(interpreter.dialog, mode="openci_only", json_file_path=JSON_DATASET_DIR/f"{dialog_info[0]}.json", dialog_id=dialog_info[0])
 
-                if generated_text.endswith("<|EOT|>"):
+                if generated_text.endswith("<|EOT|>") or generated_text.endswith("<|im_end|>",""):
                     continue
 
             return history, history, dialog_info
