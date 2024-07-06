@@ -382,7 +382,7 @@ def gradio_launch(model_path: str, MAX_TRY: int = 3):
                     [chatbot, session_state, dialog_info], queue=False)
 
     demo.queue(max_size=20)
-    demo.launch(share=True, server_port = 7000)
+    demo.launch(share=True, server_port = 8000)
 
 
 if __name__ == "__main__":

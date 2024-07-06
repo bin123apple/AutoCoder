@@ -86,14 +86,8 @@ Then, directly test it by using [DS-1000 GitHub](https://github.com/xlang-ai/DS-
 
 5. Web demo (Include code interpreter)
 
-Install gradio related pakcages
 ```
 cd /Web_demo
-pip install -r requirements.txt
-```
-
-Run it:
-```
 python chatbot.py
 ```
 
